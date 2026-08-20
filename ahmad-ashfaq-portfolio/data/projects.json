@@ -1,0 +1,52 @@
+{
+  "projects": [
+    {
+      "title": "Brand Sponsorship Reel",
+      "category": "Reel",
+      "description": "Vertical sponsored reel edit with scripted hook, text overlays, and synced music cues for a brand partnership campaign.",
+      "thumbnail": "/assets/uploads/thumb-reel.svg",
+      "link": "",
+      "tags": ["CapCut Pro", "Sponsored", "Vertical"]
+    },
+    {
+      "title": "Podcast Teaser Cut",
+      "category": "Video",
+      "description": "90-second teaser extracted from a long-form talk, built from a timestamped transcript into a punchy highlight edit.",
+      "thumbnail": "/assets/uploads/thumb-video.svg",
+      "link": "",
+      "tags": ["Podcast", "Highlight Edit", "Long-form"]
+    },
+    {
+      "title": "YouTube Cover Thumbnails",
+      "category": "Ad",
+      "description": "Editorial-style thumbnail set for a career-focused video series, designed in a luxury visual language and exported in multiple aspect ratios.",
+      "thumbnail": "/assets/uploads/thumb-ad.svg",
+      "link": "",
+      "tags": ["Thumbnails", "Editorial", "9:16 + 16:9"]
+    },
+    {
+      "title": "Creator Portfolio Website",
+      "category": "Website",
+      "description": "Custom UGC creator portfolio site built in HTML/CSS from a client reference brief, tailored to their personal brand aesthetic.",
+      "thumbnail": "/assets/uploads/thumb-web.svg",
+      "link": "",
+      "tags": ["HTML/CSS", "Portfolio Site", "Client Work"]
+    },
+    {
+      "title": "Podcast Audio-Visual Edit",
+      "category": "Podcast",
+      "description": "Full podcast episode edit with clean audio pass, chapter pacing, and branded lower-thirds.",
+      "thumbnail": "/assets/uploads/thumb-podcast.svg",
+      "link": "",
+      "tags": ["Podcast", "Audio Cleanup", "Branding"]
+    },
+    {
+      "title": "Desktop Inventory App",
+      "category": "Website",
+      "description": "Python-based desktop inventory management application with custom UI sections and configurable fields, built for a client's internal use.",
+      "thumbnail": "/assets/uploads/thumb-web.svg",
+      "link": "",
+      "tags": ["Python", "Desktop App", "UI"]
+    }
+  ]
+}
