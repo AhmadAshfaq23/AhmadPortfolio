@@ -132,4 +132,3 @@ You don't need this to deploy, but if you want to preview changes on your
 own computer first: open a terminal in this folder and run any simple
 static server, e.g. `python3 -m http.server 8080`, then visit
 `http://localhost:8080` in your browser.
-"# AhmadPortfolio" 

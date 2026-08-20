@@ -7,10 +7,13 @@
 (function () {
   if (typeof THREE === "undefined") return;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isSmallScreen = window.innerWidth < 700;
+  var isLowPower = window.innerWidth < 480;
 
   function makeRenderer(canvas) {
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !isSmallScreen });
+    var cap = isLowPower ? 1.5 : (isSmallScreen ? 1.75 : 2);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, cap));
     return renderer;
   }
 
@@ -39,7 +42,7 @@
     group.add(ico);
 
     // Edit — a torus (reel/loop)
-    var torusGeo = new THREE.TorusGeometry(1.6, 0.45, 8, 32);
+    var torusGeo = new THREE.TorusGeometry(1.6, 0.45, 8, isSmallScreen ? 16 : 32);
     var torusMat = new THREE.MeshBasicMaterial({ color: goldBright, wireframe: true, transparent: true, opacity: 0.5 });
     var torus = new THREE.Mesh(torusGeo, torusMat);
     torus.position.set(3.8, -1.2, -3);
@@ -53,7 +56,7 @@
     group.add(oct);
 
     // Ambient particle field
-    var particleCount = 140;
+    var particleCount = isLowPower ? 50 : (isSmallScreen ? 90 : 140);
     var particleGeo = new THREE.BufferGeometry();
     var positions = new Float32Array(particleCount * 3);
     for (var i = 0; i < particleCount; i++) {
@@ -82,8 +85,11 @@
     resize();
 
     var clock = new THREE.Clock();
+    var rafId = null;
+    var isVisible = true;
+
     function animate() {
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
       var t = clock.getElapsedTime();
 
       ico.rotation.x = t * 0.15;
@@ -95,15 +101,27 @@
 
       particles.rotation.y = t * 0.02;
 
-      if (!reduceMotion) {
-        group.rotation.y += (mouseX * 0.25 - group.rotation.y) * 0.02;
-        group.rotation.x += (mouseY * 0.15 - group.rotation.x) * 0.02;
-      }
+      group.rotation.y += (mouseX * 0.25 - group.rotation.y) * 0.02;
+      group.rotation.x += (mouseY * 0.15 - group.rotation.x) * 0.02;
 
       renderer.render(scene, camera);
     }
-    if (!reduceMotion) animate();
-    else renderer.render(scene, camera);
+
+    if (!reduceMotion) {
+      animate();
+      if ("IntersectionObserver" in window) {
+        var vis = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            isVisible = entry.isIntersecting;
+            if (isVisible && rafId === null) animate();
+            if (!isVisible && rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+          });
+        }, { threshold: 0 });
+        vis.observe(canvas);
+      }
+    } else {
+      renderer.render(scene, camera);
+    }
   }
 
   /* ---------------- ABOUT ---------------- */
@@ -143,16 +161,29 @@
     resize();
 
     var clock = new THREE.Clock();
+    var rafId = null;
     function animate() {
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
       var t = clock.getElapsedTime();
       rings.forEach(function (r, i) {
         r.rotation.z = t * (0.06 + i * 0.02);
       });
       renderer.render(scene, camera);
     }
-    if (!reduceMotion) animate();
-    else renderer.render(scene, camera);
+    if (!reduceMotion) {
+      animate();
+      if ("IntersectionObserver" in window) {
+        var vis = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && rafId === null) animate();
+            if (!entry.isIntersecting && rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+          });
+        }, { threshold: 0 });
+        vis.observe(canvas);
+      }
+    } else {
+      renderer.render(scene, camera);
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function () {

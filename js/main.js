@@ -1,15 +1,72 @@
 (function () {
   "use strict";
 
+  /* ---------------- PRELOADER ---------------- */
+  var minDisplay = 900;
+  var startTime = Date.now();
+  function hideLoader() {
+    var elapsed = Date.now() - startTime;
+    var wait = Math.max(0, minDisplay - elapsed);
+    setTimeout(function () {
+      document.body.classList.remove("is-loading");
+    }, wait);
+  }
+  if (document.readyState === "complete") hideLoader();
+  else window.addEventListener("load", hideLoader);
+  // Safety net in case a resource stalls
+  setTimeout(function () { document.body.classList.remove("is-loading"); }, 4000);
+
+  /* ---------------- CUSTOM CURSOR ---------------- */
+  var isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (isFinePointer) {
+    var dot = document.querySelector(".cursor-dot");
+    var ring = document.querySelector(".cursor-ring");
+    if (dot && ring) {
+      var ringX = 0, ringY = 0, targetX = 0, targetY = 0;
+      window.addEventListener("mousemove", function (e) {
+        targetX = e.clientX; targetY = e.clientY;
+        dot.style.transform = "translate(" + targetX + "px," + targetY + "px) translate(-50%,-50%)";
+      });
+      (function ringLoop() {
+        ringX += (targetX - ringX) * 0.18;
+        ringY += (targetY - ringY) * 0.18;
+        ring.style.transform = "translate(" + ringX + "px," + ringY + "px) translate(-50%,-50%)";
+        requestAnimationFrame(ringLoop);
+      })();
+      document.addEventListener("mouseover", function (e) {
+        if (e.target.closest && e.target.closest("a, button, .project-card-inner, input, textarea, select")) {
+          ring.classList.add("is-hover");
+        }
+      });
+      document.addEventListener("mouseout", function (e) {
+        if (e.target.closest && e.target.closest("a, button, .project-card-inner, input, textarea, select")) {
+          ring.classList.remove("is-hover");
+        }
+      });
+    }
+  }
+
+  /* ---------------- BACK TO TOP ---------------- */
+  var backToTop = document.querySelector(".back-to-top");
+  if (backToTop) {
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   /* ---------------- MOBILE NAV ---------------- */
   var navToggle = document.querySelector(".nav-toggle");
   var track = document.querySelector(".timeline-track");
   if (navToggle && track) {
     navToggle.addEventListener("click", function () {
       track.classList.toggle("open");
+      navToggle.classList.toggle("open");
     });
     track.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () { track.classList.remove("open"); });
+      a.addEventListener("click", function () {
+        track.classList.remove("open");
+        navToggle.classList.remove("open");
+      });
     });
   }
 
@@ -31,6 +88,8 @@
     navLinks.forEach(function (a) {
       a.classList.toggle("active", a.getAttribute("href") === "#" + current);
     });
+
+    if (backToTop) backToTop.classList.toggle("show", scrollTop > window.innerHeight * 0.6);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();

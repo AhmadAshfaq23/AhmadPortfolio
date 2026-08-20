@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmad Ashfaq — Web Developer, Video Editor &amp; Graphic Designer</title>
 <meta name="description" content="Ahmad Ashfaq — Fiverr Level 1 Seller with 2+ years experience in web development, video editing, and graphic design. Explore projects across websites, reels, podcasts, and ad creative.">
+<meta name="theme-color" content="#0a0908">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="is-loading">
 
   <!-- Hidden form so Netlify's build bot can detect it (mirrors visible contact form) -->
   <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
@@ -21,6 +22,24 @@
     <textarea name="message"></textarea>
     <input type="text" name="bot-field" />
   </form>
+
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <!-- Cinematic preloader -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader-mark">Ahmad<span>.</span>Ashfaq</div>
+    <div class="preloader-bar"><span></span></div>
+    <div class="preloader-code">LOADING · 00:00</div>
+  </div>
+
+  <!-- Film grain texture, premium filmic overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop only, CSS-gated) -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
 
   <div class="scrub-bar"></div>
 
