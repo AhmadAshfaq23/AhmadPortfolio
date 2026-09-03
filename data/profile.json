@@ -2,13 +2,13 @@
   "name": "Ahmad Ashfaq",
   "role": "Web Developer · Video Editor · Graphic Designer",
   "tagline": "I build the sites you launch on and cut the reels you launch with.",
-  "bio": "I'm a Fiverr Level 1 Seller with 2+ years of freelance experience shipping polished websites, short-form edits, and brand visuals for clients who need work that performs, not just looks nice. I move between three disciplines — code, edit, and design — so every project I touch gets treated like a single connected piece, not three separate hand-offs.",
+  "bio": "I'm a Fiverr Level 1 Seller with 3+ years of freelance experience shipping polished websites, short-form edits, and brand visuals for clients who need work that performs, not just looks nice. I move between three disciplines — code, edit, and design — so every project I touch gets treated like a single connected piece, not three separate hand-offs.",
   "photo": "/assets/uploads/ahmad-photo.jpg",
   "email": "ahmadashfaq2374@gmail.com",
   "location": "Available worldwide · Remote",
   "fiverrUrl": "https://www.fiverr.com/",
   "portfolioDriveUrl": "https://drive.google.com/drive/folders/1jhMc1lnXluzbdwchXD8qy3iFIHLW32Xl?usp=sharing",
-  "yearsExperience": "2+",
+  "yearsExperience": "3+",
   "fiverrLevel": "Level 1 Seller",
   "stats": [
     { "label": "Years Freelancing", "value": "2+" },
@@ -40,20 +40,20 @@
   ],
   "testimonials": [
     {
-      "quote": "Replace this with a real client quote from Fiverr or a direct client — screenshots work too, but written quotes read cleaner here.",
-      "author": "Client Name",
+      "quote": "Very talented and goes above and beyondto satisfy the Customer.",
+      "author": "Ericpearson",
       "role": "Fiverr Buyer"
     },
     {
-      "quote": "Second placeholder testimonial — swap in your best review once you have 2-3 collected.",
-      "author": "Client Name",
+      "quote": "Great Work on the Video Editing .Easy Communication and Fast Delivery",
+      "author": "Sean",
       "role": "Fiverr Buyer"
     }
   ],
   "socials": [
     { "platform": "Fiverr", "url": "https://www.fiverr.com/" },
-    { "platform": "Instagram", "url": "https://instagram.com/" },
-    { "platform": "LinkedIn", "url": "https://linkedin.com/" },
+    { "platform": "Instagram", "url": "https://www.instagram.com/ahmadashfaq2?igsi=NXNyZnlqbXB0NzJ0" },
+    { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/ahmad-ashfaq-19189927b?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
     { "platform": "YouTube", "url": "https://youtube.com/" }
   ]
 }
