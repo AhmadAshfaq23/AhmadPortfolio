@@ -93,16 +93,24 @@ rebuilds and republishes the live site within about a minute.
 
 ## 4. Replace the placeholder images
 
-Your real profile photo is already in place at `assets/uploads/ahmad-photo.jpg`
-and wired into `data/profile.json`. Project thumbnails are still placeholder
-graphics labeled "REPLACE" — swap them either:
-- **Through the admin panel** — open a project, and upload a new image
-  directly in the image field, or
-- **Manually** — replace the files in `assets/uploads/` with your own
-  thumbnails and update the path in `data/projects.json`.
+Your real profile photo (`assets/uploads/ahmad-photo.jpg`) and five real
+portfolio thumbnails (`thumb-video.jpg`, `thumb-reel.jpg`,
+`thumb-podcast.jpg`, `thumb-ad.jpg`, `thumb-web.jpg`) are already in place
+and wired into `data/profile.json` / `data/projects.json`. The first
+project in the grid also gets a wider "★ Featured" spotlight treatment on
+desktop automatically — no setup needed, it just always highlights
+whichever project is listed first.
 
-For best results: project thumbnails roughly 8:5 landscape (they'll crop to
-fit if not exact).
+To add more projects or swap any thumbnail later, either:
+- **Through the admin panel** — open a project, upload a new image
+  directly in the image field, or
+- **Manually** — add new images to `assets/uploads/` and update the path
+  in `data/projects.json`.
+
+For best results: project thumbnails roughly 8:5 landscape and at least
+1000px wide load sharpest (a couple of the current samples are lower-res
+phone screenshots — swap in higher-resolution exports when you have them,
+for a crisper look on large screens).
 
 ---
 

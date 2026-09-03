@@ -1,52 +1,44 @@
 {
   "projects": [
     {
-      "title": "Brand Sponsorship Reel",
-      "category": "Reel",
-      "description": "Vertical sponsored reel edit with scripted hook, text overlays, and synced music cues for a brand partnership campaign.",
-      "thumbnail": "/assets/uploads/thumb-reel.svg",
-      "link": "",
-      "tags": ["CapCut Pro", "Sponsored", "Vertical"]
-    },
-    {
-      "title": "Podcast Teaser Cut",
+      "title": "High-CTR YouTube Thumbnail Design",
       "category": "Video",
-      "description": "90-second teaser extracted from a long-form talk, built from a timestamped transcript into a punchy highlight edit.",
-      "thumbnail": "/assets/uploads/thumb-video.svg",
+      "description": "Bold typography-driven thumbnail with layered text, glow effects, and a clear visual hierarchy (Avoid / Learn / Grow) — designed to maximize click-through on a coaching-style YouTube video.",
+      "thumbnail": "/assets/uploads/thumb-video.jpg",
       "link": "",
-      "tags": ["Podcast", "Highlight Edit", "Long-form"]
+      "tags": ["Thumbnail Design", "YouTube", "Typography"]
     },
     {
-      "title": "YouTube Cover Thumbnails",
-      "category": "Ad",
-      "description": "Editorial-style thumbnail set for a career-focused video series, designed in a luxury visual language and exported in multiple aspect ratios.",
-      "thumbnail": "/assets/uploads/thumb-ad.svg",
+      "title": "Health Niche Vertical Video Edit",
+      "category": "Reel",
+      "description": "Vertical short-form edit with a rounded circle-frame intro, layered captions, and clean pacing — built for a bilingual (Spanish) health-and-wellness message.",
+      "thumbnail": "/assets/uploads/thumb-reel.jpg",
       "link": "",
-      "tags": ["Thumbnails", "Editorial", "9:16 + 16:9"]
+      "tags": ["Vertical Edit", "Captions", "Short-Form"]
     },
     {
-      "title": "Creator Portfolio Website",
-      "category": "Website",
-      "description": "Custom UGC creator portfolio site built in HTML/CSS from a client reference brief, tailored to their personal brand aesthetic.",
-      "thumbnail": "/assets/uploads/thumb-web.svg",
-      "link": "",
-      "tags": ["HTML/CSS", "Portfolio Site", "Client Work"]
-    },
-    {
-      "title": "Podcast Audio-Visual Edit",
+      "title": "\"The Pitch Secret\" — Podcast Thumbnail",
       "category": "Podcast",
-      "description": "Full podcast episode edit with clean audio pass, chapter pacing, and branded lower-thirds.",
-      "thumbnail": "/assets/uploads/thumb-podcast.svg",
+      "description": "High-contrast red-to-blue gradient thumbnail with bold callout typography and a cut-out subject — designed for a business strategy podcast episode.",
+      "thumbnail": "/assets/uploads/thumb-podcast.jpg",
       "link": "",
-      "tags": ["Podcast", "Audio Cleanup", "Branding"]
+      "tags": ["Thumbnail Design", "Podcast", "Branding"]
     },
     {
-      "title": "Desktop Inventory App",
-      "category": "Website",
-      "description": "Python-based desktop inventory management application with custom UI sections and configurable fields, built for a client's internal use.",
-      "thumbnail": "/assets/uploads/thumb-web.svg",
+      "title": "Expats & Digital Nomads — Vertical Ad Edit",
+      "category": "Ad",
+      "description": "Vertical social ad edit with on-screen hook text and clean lower-third captioning, tailored to a remote-lifestyle and expat audience.",
+      "thumbnail": "/assets/uploads/thumb-ad.jpg",
       "link": "",
-      "tags": ["Python", "Desktop App", "UI"]
+      "tags": ["Vertical Ad", "Captions", "Social Creative"]
+    },
+    {
+      "title": "UGC Creator Portfolio Website",
+      "category": "Website",
+      "description": "Custom portfolio website build for a UGC creator — warm editorial color palette, embedded video showcase, and a clean nav across Home / About / Content / Services.",
+      "thumbnail": "/assets/uploads/thumb-web.jpg",
+      "link": "",
+      "tags": ["Website Design", "UGC Portfolio", "Custom Build"]
     }
   ]
 }
