@@ -6,7 +6,24 @@
 <title>Ahmad Ashfaq — Web Developer, Video Editor &amp; Graphic Designer</title>
 <meta name="description" content="Ahmad Ashfaq — Fiverr Level 1 Seller with 2+ years experience in web development, video editing, and graphic design. Explore projects across websites, reels, podcasts, and ad creative.">
 <meta name="theme-color" content="#0a0908">
-<link rel="icon" href="data:,">
+
+<!-- Favicon / logo -->
+<link rel="icon" type="image/svg+xml" href="/assets/uploads/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/uploads/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/uploads/apple-touch-icon.png">
+
+<!-- Social share preview (Facebook, LinkedIn, WhatsApp, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmad Ashfaq — Web Developer, Video Editor & Graphic Designer">
+<meta property="og:description" content="Fiverr Level 1 Seller with 2+ years experience in web development, video editing, and graphic design.">
+<meta property="og:image" content="/assets/uploads/ahmad-photo.jpg">
+
+<!-- Social share preview (Twitter/X) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ahmad Ashfaq — Web Developer, Video Editor & Graphic Designer">
+<meta name="twitter:description" content="Fiverr Level 1 Seller with 2+ years experience in web development, video editing, and graphic design.">
+<meta name="twitter:image" content="/assets/uploads/ahmad-photo.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -41,20 +58,32 @@
 
   <button class="back-to-top" aria-label="Back to top">↑</button>
 
+  <!-- Video lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="Close video">✕</button>
+      <div class="lightbox-embed"></div>
+    </div>
+  </div>
+
   <div class="scrub-bar"></div>
 
   <nav class="timeline-nav">
-    <div class="container">
-      <a href="#home" class="brand">Ahmad<span>.</span>Ashfaq</a>
+    <div class="nav-shell">
+      <a href="#home" class="brand">
+        <span class="brand-mark">AA</span>
+        <span class="brand-text">Ahmad<span>.</span>Ashfaq</span>
+      </a>
       <ul class="timeline-track">
-        <li><a href="#about" data-code="00:01">About</a></li>
-        <li><a href="#services" data-code="00:02">Services</a></li>
-        <li><a href="#portfolio" data-code="00:03">Portfolio</a></li>
-        <li><a href="#testimonials" data-code="00:04">Feedback</a></li>
-        <li><a href="#contact" data-code="00:05">Contact</a></li>
+        <li><a href="#about" data-code="01">About</a></li>
+        <li><a href="#services" data-code="02">Services</a></li>
+        <li><a href="#archive" data-code="03">Archive</a></li>
+        <li><a href="#portfolio" data-code="04">Portfolio</a></li>
+        <li><a href="#testimonials" data-code="05">Feedback</a></li>
+        <li><a href="#contact" data-code="06">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Start a Project</a>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+      <a href="#contact" class="nav-cta"><span>Start a Project</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </nav>
 
@@ -75,13 +104,33 @@
       </div>
       <div class="hero-frame">
         <div class="hero-frame-inner">
-          <img data-field="photo" src="assets/uploads/profile-placeholder.svg" alt="Ahmad Ashfaq">
+          <div class="hero-photo-wrap">
+            <img data-field="photo" src="assets/uploads/profile-placeholder.svg" alt="Ahmad Ashfaq">
+          </div>
           <span class="hero-frame-tag">REC · 00:00:01</span>
           <span class="hero-frame-corner">A. ASHFAQ</span>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- ================= CREDENTIALS MARQUEE ================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Fiverr Level 1 Seller</span><span class="dot">•</span>
+      <span>2+ Years Experience</span><span class="dot">•</span>
+      <span>Web Development</span><span class="dot">•</span>
+      <span>Video Editing</span><span class="dot">•</span>
+      <span>Graphic Design</span><span class="dot">•</span>
+      <span>Short-Form Reels</span><span class="dot">•</span>
+      <span>Fiverr Level 1 Seller</span><span class="dot">•</span>
+      <span>2+ Years Experience</span><span class="dot">•</span>
+      <span>Web Development</span><span class="dot">•</span>
+      <span>Video Editing</span><span class="dot">•</span>
+      <span>Graphic Design</span><span class="dot">•</span>
+      <span>Short-Form Reels</span><span class="dot">•</span>
+    </div>
+  </div>
 
   <!-- ================= ABOUT ================= -->
   <section id="about">
@@ -111,12 +160,33 @@
     </div>
   </section>
 
+  <!-- ================= VIDEO ARCHIVE (Google Drive) ================= -->
+  <section id="archive">
+    <div class="container">
+      <div class="archive-banner reveal">
+        <div class="archive-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 6L6 25l6 11h20l6-11L27 6H17z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M17 6l10 19h11" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M12 36l6-11" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="archive-text">
+          <div class="eyebrow">00:03 — Extended Library</div>
+          <h2>Full Video Portfolio Archive</h2>
+          <p>The showcase below is a curated selection. For the complete, continuously updated library of edited videos, podcast cuts, reels, and ad creative, browse the full archive on Google Drive.</p>
+        </div>
+        <a href="#" data-drive-href target="_blank" rel="noopener" class="btn btn-primary archive-btn">Open Portfolio Drive ↗</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PORTFOLIO ================= -->
   <section id="portfolio">
     <div class="container">
       <div class="portfolio-header">
         <div>
-          <div class="eyebrow">00:03 — Portfolio</div>
+          <div class="eyebrow">00:04 — Portfolio</div>
           <h2 class="section-title reveal">Selected work.</h2>
           <p class="section-lede reveal">Videos, podcasts, reels, ad creative, and websites — filter by format.</p>
         </div>
@@ -129,7 +199,7 @@
   <!-- ================= TESTIMONIALS ================= -->
   <section id="testimonials">
     <div class="container">
-      <div class="eyebrow">00:04 — Feedback</div>
+      <div class="eyebrow">00:05 — Feedback</div>
       <h2 class="section-title reveal">What clients say.</h2>
       <div class="testimonial-track" data-testimonials></div>
     </div>
@@ -140,13 +210,14 @@
     <div class="container">
       <div class="contact-grid">
         <div>
-          <div class="eyebrow">00:05 — Contact</div>
+          <div class="eyebrow">00:06 — Contact</div>
           <h2 class="section-title reveal">Let's start the project.</h2>
           <p class="section-lede reveal">Tell me what you need — a site, an edit, a reel, or a full brand package — and I'll follow up within 48 hours.</p>
           <div class="contact-detail">
-            <div class="contact-detail-row"><span class="k">Email</span><a class="v" data-mailto href="mailto:hello@example.com" data-field="email">hello@example.com</a></div>
+            <div class="contact-detail-row"><span class="k">Email</span><a class="v" data-mailto href="mailto:hello@example.com" data-field="email">ahmadashfaq2374@gmail.com</a></div>
             <div class="contact-detail-row"><span class="k">Location</span><span class="v" data-field="location">Available worldwide · Remote</span></div>
             <div class="contact-detail-row"><span class="k">Fiverr</span><a class="v" data-fiverr-href href="#" target="_blank" rel="noopener">View Fiverr Profile</a></div>
+            <div class="contact-detail-row"><span class="k">Portfolio</span><a class="v" data-drive-href href="#" target="_blank" rel="noopener">Full Drive Archive ↗</a></div>
           </div>
           <div class="social-row" data-socials></div>
         </div>
@@ -194,8 +265,22 @@
     </div>
   </footer>
 
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/three-hero.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    // Catches Netlify Identity invite/confirmation/recovery links that land
+    // on the homepage instead of /admin/, and redirects into the CMS so the
+    // "set password" step actually completes.
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        var hash = window.location.hash;
+        if (hash && (hash.includes("invite_token") || hash.includes("confirmation_token") || hash.includes("recovery_token"))) {
+          window.location.href = "/admin/" + hash;
+        }
+      });
+    }
+  </script>
 </body>
 </html>

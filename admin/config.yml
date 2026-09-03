@@ -24,6 +24,7 @@ collections:
           - { label: "Contact Email", name: "email", widget: "string" }
           - { label: "Location Line", name: "location", widget: "string" }
           - { label: "Fiverr Profile URL", name: "fiverrUrl", widget: "string" }
+          - { label: "Full Portfolio Drive Link (Google Drive folder URL)", name: "portfolioDriveUrl", widget: "string" }
           - { label: "Years Experience", name: "yearsExperience", widget: "string" }
           - { label: "Fiverr Level", name: "fiverrLevel", widget: "string" }
           - label: "Stats (shown on homepage)"
@@ -72,5 +73,5 @@ collections:
                 options: ["Website", "Video", "Podcast", "Reel", "Ad"]
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-              - { label: "Link (optional, live URL or video link)", name: "link", widget: "string", required: false }
+              - { label: "YouTube or Vimeo Link (paste the full video URL — click-to-play on the site)", name: "link", widget: "string", required: false, hint: "e.g. https://www.youtube.com/watch?v=XXXXXXXXXXX — leave blank if this project has no video" }
               - { label: "Tags", name: "tags", widget: "list" }

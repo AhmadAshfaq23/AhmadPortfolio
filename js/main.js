@@ -59,19 +59,22 @@
   var track = document.querySelector(".timeline-track");
   if (navToggle && track) {
     navToggle.addEventListener("click", function () {
-      track.classList.toggle("open");
-      navToggle.classList.toggle("open");
+      var isOpen = track.classList.toggle("open");
+      navToggle.classList.toggle("open", isOpen);
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
     track.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
         track.classList.remove("open");
         navToggle.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
       });
     });
   }
 
   /* ---------------- SCRUB / PROGRESS BAR + ACTIVE LINK ---------------- */
   var scrubBar = document.querySelector(".scrub-bar");
+  var navEl = document.querySelector(".timeline-nav");
   var sections = document.querySelectorAll("section[id]");
   var navLinks = document.querySelectorAll(".timeline-track a");
 
@@ -79,6 +82,7 @@
     var scrollTop = window.scrollY;
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (scrubBar) scrubBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+    if (navEl) navEl.classList.toggle("scrolled", scrollTop > 24);
 
     var current = "";
     sections.forEach(function (sec) {
@@ -198,7 +202,42 @@
     fiverrEls.forEach(function (el) {
       if (profile.fiverrUrl) el.setAttribute("href", profile.fiverrUrl);
     });
+    var driveEls = document.querySelectorAll("[data-drive-href]");
+    driveEls.forEach(function (el) {
+      if (profile.portfolioDriveUrl) el.setAttribute("href", profile.portfolioDriveUrl);
+    });
   }
+
+  function getEmbedUrl(link) {
+    if (!link) return null;
+    var yt = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+    if (yt) return "https://www.youtube.com/embed/" + yt[1] + "?autoplay=1&rel=0";
+    var vimeo = link.match(/vimeo\.com\/(\d+)/);
+    if (vimeo) return "https://player.vimeo.com/video/" + vimeo[1] + "?autoplay=1";
+    return null;
+  }
+
+  var lightbox = document.querySelector(".lightbox");
+  var lightboxEmbed = document.querySelector(".lightbox-embed");
+  var lightboxClose = document.querySelector(".lightbox-close");
+
+  function openLightbox(embedUrl) {
+    if (!lightbox || !lightboxEmbed) return;
+    lightboxEmbed.innerHTML = '<iframe src="' + embedUrl + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Project video"></iframe>';
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    if (!lightbox || !lightboxEmbed) return;
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxEmbed.innerHTML = "";
+    document.body.style.overflow = "";
+  }
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightbox) lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
 
   var allProjects = [];
   function renderProjects(filter) {
@@ -212,16 +251,30 @@
     }
 
     grid.innerHTML = list.map(function (p) {
-      var card = '<div class="project-card"><div class="project-card-inner">' +
+      var embedUrl = getEmbedUrl(p.link);
+      var playBadge = embedUrl
+        ? '<div class="project-play"><div class="project-play-btn"></div></div>'
+        : "";
+      var card = '<div class="project-card"><div class="project-card-inner' + (embedUrl ? " has-video" : "") + '">' +
         '<div class="project-thumb"><span class="project-cat-tag">' + esc(p.category) + '</span>' +
-        '<img src="' + escAttr(p.thumbnail) + '" alt="' + escAttr(p.title) + '" loading="lazy"></div>' +
+        '<img src="' + escAttr(p.thumbnail) + '" alt="' + escAttr(p.title) + '" loading="lazy">' + playBadge + '</div>' +
         '<div class="project-body"><h3>' + esc(p.title) + '</h3><p>' + esc(p.description) + '</p>' +
         '<div class="project-tags">' + (p.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + '</div>' +
         '</div></div></div>';
       return card;
     }).join("");
 
-    grid.querySelectorAll(".project-card-inner").forEach(function (el) { attachTilt(el, 6); });
+    grid.querySelectorAll(".project-card-inner").forEach(function (el, i) {
+      attachTilt(el, 6);
+      var p = list[i];
+      var embedUrl = getEmbedUrl(p.link);
+      if (embedUrl) {
+        el.addEventListener("click", function () { openLightbox(embedUrl); });
+      } else if (p.link) {
+        el.style.cursor = "pointer";
+        el.addEventListener("click", function () { window.open(p.link, "_blank", "noopener"); });
+      }
+    });
   }
 
   function buildFilters(projects) {

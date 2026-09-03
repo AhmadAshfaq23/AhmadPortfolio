@@ -93,20 +93,39 @@ rebuilds and republishes the live site within about a minute.
 
 ## 4. Replace the placeholder images
 
-Right now the profile photo and project thumbnails are elegant placeholder
-graphics labeled "REPLACE." Swap them either:
-- **Through the admin panel** — open a project or your profile, and
-  upload a new image directly in the image field, or
+Your real profile photo is already in place at `assets/uploads/ahmad-photo.jpg`
+and wired into `data/profile.json`. Project thumbnails are still placeholder
+graphics labeled "REPLACE" — swap them either:
+- **Through the admin panel** — open a project, and upload a new image
+  directly in the image field, or
 - **Manually** — replace the files in `assets/uploads/` with your own
-  photo/thumbnails using the same filenames (or upload new ones and update
-  the path in `data/profile.json` / `data/projects.json`).
+  thumbnails and update the path in `data/projects.json`.
 
-For best results: profile photo roughly 3:4 portrait, project thumbnails
-roughly 8:5 landscape (or close — they'll crop to fit).
+For best results: project thumbnails roughly 8:5 landscape (they'll crop to
+fit if not exact).
 
 ---
 
-## 5. The contact form
+## 5. The Google Drive Video Archive banner
+
+There's a dedicated, premium-styled banner section on the site (right after
+Services, before the curated Portfolio grid) that links straight to your
+full Google Drive portfolio folder — this is where visitors go to browse
+everything, not just the featured picks in the grid.
+
+It's driven by the `portfolioDriveUrl` field in `data/profile.json` (also
+editable from the admin panel under **Profile & Site Content**). The same
+link is repeated in the Contact section for visibility. To change it later,
+just update that one field — every link on the site referencing it updates
+automatically.
+
+**Important:** make sure your Google Drive folder's sharing setting is
+**"Anyone with the link → Viewer"** (not "Restricted"), or visitors won't be
+able to open it.
+
+---
+
+## 6. The contact form
 
 The contact form on the site uses **Netlify Forms**, which is free up to
 100 submissions/month. Once deployed, submissions will appear under
@@ -116,7 +135,7 @@ out.
 
 ---
 
-## 6. Making direct edits without the admin panel
+## 7. Making direct edits without the admin panel
 
 If you ever want to hand-edit content:
 - Open `data/profile.json` or `data/projects.json` in any text editor
@@ -126,9 +145,28 @@ If you ever want to hand-edit content:
 
 ---
 
-## 7. Local preview before deploying (optional)
+## 8. Important: don't preview by double-clicking index.html
 
-You don't need this to deploy, but if you want to preview changes on your
-own computer first: open a terminal in this folder and run any simple
-static server, e.g. `python3 -m http.server 8080`, then visit
-`http://localhost:8080` in your browser.
+This site loads your content (bio, stats, projects, the Drive link, etc.)
+dynamically from `data/profile.json` and `data/projects.json` using
+JavaScript. Browsers block this for security when a page is opened directly
+as a local file (`file:///...`) — so if you just double-click `index.html`,
+the page will load but **all dynamic content, including the "Open Portfolio
+Drive" button, will silently fail to populate.**
+
+To preview correctly:
+- **Easiest:** deploy to Netlify (see section 2) and view the live URL
+- **Local preview:** open a terminal in this folder and run
+  `python3 -m http.server 8080`, then visit `http://localhost:8080` —
+  never `file://...`
+
+## 9. Logo / favicon
+
+A gold monogram browser-tab icon (matching the "AA" mark in the navbar) is
+included at `assets/uploads/favicon.svg` (plus PNG fallbacks for older
+browsers and Apple devices). Your profile photo is also set as the preview
+image shown when the site link is shared on WhatsApp, Facebook, LinkedIn,
+etc. To change the logo later, replace `favicon.svg`, `favicon-32.png`, and
+`apple-touch-icon.png` with your own design (keep the same filenames, or
+update the paths in the `<head>` of `index.html`).
+
