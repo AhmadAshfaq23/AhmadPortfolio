@@ -27,7 +27,12 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
 
 /* ==========================================================================
    PRELOADER
@@ -155,6 +160,9 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 img { max-width: 100%; display: block; }
@@ -399,10 +407,18 @@ section { position: relative; padding: 120px 0; }
 
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: 130px;
+  padding-bottom: 40px;
   position: relative;
+}
+
+/* Short or landscape phones: don't force full-height scroll before the CTA is reachable */
+@media (max-height: 560px) and (orientation: landscape) {
+  .hero { min-height: auto; padding-top: 110px; padding-bottom: 40px; }
+  .hero-stats { margin-top: 32px; padding-top: 20px; }
 }
 
 #hero-canvas {
